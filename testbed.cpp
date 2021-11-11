@@ -2,7 +2,7 @@
 
 TEST(ArabicToRomanNumeralsConverter, PreparationsCompleted)
 {
-    GTEST_FAIL();
+    GTEST_SUCCEED();
 }
 
 int main(int argc, char** argv)
