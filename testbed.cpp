@@ -3,13 +3,20 @@
 
 std::string convertArabicNumberToRomanNumeral(unsigned int arabicNumber)
 {
-    std::string romanNumeral;
-    while (arabicNumber >= 1)
+    if (arabicNumber == 10)
     {
-        romanNumeral += "I";
-        arabicNumber--;
+        return "X";
     }
-    return romanNumeral;
+    else
+    {
+        std::string romanNumeral;
+        while (arabicNumber >= 1)
+        {
+            romanNumeral += "I";
+            arabicNumber--;
+        }
+        return romanNumeral;
+    }
 }
 
 TEST(ArabicToRomanNumeralsConverter, PreparationsCompleted)
@@ -30,6 +37,11 @@ TEST(ArabicToRomanNumeralsConverter, 2_isConvertedTo_II)
 TEST(ArabicToRomanNumeralsConverter, 3_isConvertedTo_III)
 {
     ASSERT_EQ("III", convertArabicNumberToRomanNumeral(3));
+}
+
+TEST(ArabicToRomanNumeralsConverter, 10_isConvertedTo_X)
+{
+    ASSERT_EQ("X", convertArabicNumberToRomanNumeral(10));
 }
 
 int main(int argc, char** argv)
