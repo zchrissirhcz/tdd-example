@@ -3,7 +3,7 @@
 
 std::string convertArabicNumberToRomanNumeral(const unsigned int arabicNumber)
 {
-    return "";
+    return "I";
 }
 
 TEST(ArabicToRomanNumeralsConverter, PreparationsCompleted)
