@@ -1,17 +1,15 @@
 #include "gtest/gtest.h"
 #include <string>
 
-std::string convertArabicNumberToRomanNumeral(const unsigned int arabicNumber)
+std::string convertArabicNumberToRomanNumeral(unsigned int arabicNumber)
 {
-    if (arabicNumber == 3)
+    std::string romanNumeral;
+    while (arabicNumber >= 1)
     {
-        return "III";
+        romanNumeral += "I";
+        arabicNumber--;
     }
-    if (arabicNumber == 2)
-    {
-        return "II";
-    }
-    return "I";
+    return romanNumeral;
 }
 
 TEST(ArabicToRomanNumeralsConverter, PreparationsCompleted)
