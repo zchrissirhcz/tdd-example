@@ -3,28 +3,18 @@
 
 std::string convertArabicNumberToRomanNumeral(unsigned int arabicNumber)
 {
-    if (arabicNumber == 10)
+    std::string romanNumeral;
+    while(arabicNumber >= 10)
     {
-        return "X";
+        romanNumeral += "X";
+        arabicNumber -= 10;
     }
-    else if (arabicNumber == 20)
+    while (arabicNumber >= 1)
     {
-        return "XX";
+        romanNumeral += "I";
+        arabicNumber--;
     }
-    else if (arabicNumber == 30)
-    {
-        return "XXX";
-    }
-    else
-    {
-        std::string romanNumeral;
-        while (arabicNumber >= 1)
-        {
-            romanNumeral += "I";
-            arabicNumber--;
-        }
-        return romanNumeral;
-    }
+    return romanNumeral;
 }
 
 TEST(ArabicToRomanNumeralsConverter, PreparationsCompleted)
