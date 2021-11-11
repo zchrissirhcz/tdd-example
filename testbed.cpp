@@ -3,6 +3,10 @@
 
 std::string convertArabicNumberToRomanNumeral(const unsigned int arabicNumber)
 {
+    if (arabicNumber == 3)
+    {
+        return "III";
+    }
     if (arabicNumber == 2)
     {
         return "II";
@@ -23,6 +27,11 @@ TEST(ArabicToRomanNumeralsConverter, 1_isConvertedTo_I)
 TEST(ArabicToRomanNumeralsConverter, 2_isConvertedTo_II)
 {
     ASSERT_EQ("II", convertArabicNumberToRomanNumeral(2));
+}
+
+TEST(ArabicToRomanNumeralsConverter, 3_isConvertedTo_III)
+{
+    ASSERT_EQ("III", convertArabicNumberToRomanNumeral(3));
 }
 
 int main(int argc, char** argv)
