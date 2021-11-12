@@ -17,39 +17,33 @@ std::string convertArabicNumberToRomanNumeral(unsigned int arabicNumber)
     return romanNumeral;
 }
 
-TEST(ArabicToRomanNumeralsConverter, PreparationsCompleted)
+class RomanNumeralAssert {
+public:
+    RomanNumeralAssert() = delete;
+    explicit RomanNumeralAssert(const unsigned int _arabicNumber) : 
+        arabicNumber(_arabicNumber) {}
+    void isConvertedToRomanNumeral(const std::string& expectedRomanNumeral) const {
+        ASSERT_EQ(expectedRomanNumeral, convertArabicNumberToRomanNumeral(arabicNumber));
+    }
+private:
+    const unsigned int arabicNumber;
+};
+
+RomanNumeralAssert assertThat(const unsigned int arabicNumber)
 {
-    GTEST_SUCCEED();
+    RomanNumeralAssert assert{arabicNumber};
+    return assert;
 }
 
-TEST(ArabicToRomanNumeralsConverter, 1_isConvertedTo_I)
+TEST(ArabicToRomanNumeralsConverter, many_cases)
 {
-    ASSERT_EQ("I", convertArabicNumberToRomanNumeral(1));
-}
-
-TEST(ArabicToRomanNumeralsConverter, 2_isConvertedTo_II)
-{
-    ASSERT_EQ("II", convertArabicNumberToRomanNumeral(2));
-}
-
-TEST(ArabicToRomanNumeralsConverter, 3_isConvertedTo_III)
-{
-    ASSERT_EQ("III", convertArabicNumberToRomanNumeral(3));
-}
-
-TEST(ArabicToRomanNumeralsConverter, 10_isConvertedTo_X)
-{
-    ASSERT_EQ("X", convertArabicNumberToRomanNumeral(10));
-}
-
-TEST(ArabicToRomanNumeralsConverter, 20_isConvertedTo_XX)
-{
-    ASSERT_EQ("XX", convertArabicNumberToRomanNumeral(20));
-}
-
-TEST(ArabicToRomanNumeralsConverter, 10_isConvertedTo_XXX)
-{
-    ASSERT_EQ("XXX", convertArabicNumberToRomanNumeral(30));
+    assertThat(1).isConvertedToRomanNumeral("I");
+    assertThat(2).isConvertedToRomanNumeral("II");
+    assertThat(3).isConvertedToRomanNumeral("III");
+    assertThat(10).isConvertedToRomanNumeral("X");
+    assertThat(20).isConvertedToRomanNumeral("XX");
+    assertThat(30).isConvertedToRomanNumeral("XXX");
+    assertThat(33).isConvertedToRomanNumeral("XXXIII");
 }
 
 int main(int argc, char** argv)
