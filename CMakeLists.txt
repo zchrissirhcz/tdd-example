@@ -3,17 +3,19 @@ project(tdd)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(testbed
-  testbed.cpp
+add_library(arabicToRomanNumeralConveter
+  ArabicToRomanNumeralConverter.hpp
+  ArabicToRomanNumeralConverter.cpp
 )
+target_link_libraries(arabicToRomanNumeralConveter PUBLIC GTest::gtest -coverage -lgcov)
+target_compile_options(arabicToRomanNumeralConveter PUBLIC -coverage -fprofile-arcs -ftest-coverage)
 
 include("deps.cmake")
-target_link_libraries(testbed GTest::gtest -coverage -lgcov)
 
+add_executable(testbed testbed.cpp)
+target_link_libraries(testbed arabicToRomanNumeralConveter)
 enable_testing()
 gtest_add_tests(TARGET testbed)
-
-target_compile_options(testbed PUBLIC -coverage -fprofile-arcs -ftest-coverage)
 
 
 add_custom_target(coverage
