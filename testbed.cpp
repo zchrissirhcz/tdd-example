@@ -61,6 +61,7 @@ TEST(ArabicToRomanNumeralsConverter, many_cases)
     assertThat(100).isConvertedToRomanNumeral("C");
     assertThat(200).isConvertedToRomanNumeral("CC");
     assertThat(300).isConvertedToRomanNumeral("CCC");
+    assertThat(1000).isConvertedToRomanNumeral("M");
 }
 
 int main(int argc, char** argv)
