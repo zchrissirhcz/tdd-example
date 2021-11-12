@@ -8,10 +8,11 @@ struct ArabicToRomanMapping
     std::string romanNumeral;
 };
 
-const std::size_t numberOfMappings = 3;
+const std::size_t numberOfMappings = 4;
 using ArabicToRomanMappings = std::array<ArabicToRomanMapping, numberOfMappings>;
 
 const ArabicToRomanMappings arabicToRomanMappings = { {
+    {1000, "M"},
     {100, "C"},
     {10, "X"},
     {1, "I"}
