@@ -8,7 +8,7 @@ struct ArabicToRomanMapping
     std::string romanNumeral;
 };
 
-const std::size_t numberOfMappings = 7;
+const std::size_t numberOfMappings = 8;
 using ArabicToRomanMappings = std::array<ArabicToRomanMapping, numberOfMappings>;
 
 const ArabicToRomanMappings arabicToRomanMappings = { {
@@ -18,6 +18,7 @@ const ArabicToRomanMappings arabicToRomanMappings = { {
     {50, "L"},
     {10, "X"},
     {5, "V"},
+    {4, "IV"},
     {1, "I"}
 } };
 
@@ -71,7 +72,7 @@ TEST(ArabicToRomanNumeralsConverter, many_cases)
     assertThat(37).isConvertedToRomanNumeral("XXXVII");
     assertThat(50).isConvertedToRomanNumeral("L");
     assertThat(500).isConvertedToRomanNumeral("D");
-    assertThat(4).isConvertedToRomanNumeral("V");
+    assertThat(4).isConvertedToRomanNumeral("IV");
 }
 
 int main(int argc, char** argv)
