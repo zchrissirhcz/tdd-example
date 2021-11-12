@@ -71,6 +71,7 @@ TEST(ArabicToRomanNumeralsConverter, many_cases)
     assertThat(37).isConvertedToRomanNumeral("XXXVII");
     assertThat(50).isConvertedToRomanNumeral("L");
     assertThat(500).isConvertedToRomanNumeral("D");
+    assertThat(4).isConvertedToRomanNumeral("V");
 }
 
 int main(int argc, char** argv)
