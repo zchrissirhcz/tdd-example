@@ -4,6 +4,10 @@
 std::string convertArabicNumberToRomanNumeral(unsigned int arabicNumber)
 {
     std::string romanNumeral;
+    while (arabicNumber >= 100) {
+        romanNumeral += "C";
+        arabicNumber -= 100;
+    }
     while(arabicNumber >= 10)
     {
         romanNumeral += "X";
@@ -44,6 +48,9 @@ TEST(ArabicToRomanNumeralsConverter, many_cases)
     assertThat(20).isConvertedToRomanNumeral("XX");
     assertThat(30).isConvertedToRomanNumeral("XXX");
     assertThat(33).isConvertedToRomanNumeral("XXXIII");
+    assertThat(100).isConvertedToRomanNumeral("C");
+    assertThat(200).isConvertedToRomanNumeral("CC");
+    assertThat(300).isConvertedToRomanNumeral("CCC");
 }
 
 int main(int argc, char** argv)
