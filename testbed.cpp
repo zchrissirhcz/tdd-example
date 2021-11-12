@@ -1,22 +1,39 @@
 #include "gtest/gtest.h"
 #include <string>
+#include <array>
+
+struct ArabicToRomanMapping
+{
+    unsigned int arabicNumber;
+    std::string romanNumeral;
+};
+
+const std::size_t numberOfMappings = 3;
+using ArabicToRomanMappings = std::array<ArabicToRomanMapping, numberOfMappings>;
+
+const ArabicToRomanMappings arabicToRomanMappings = { {
+    {100, "C"},
+    {10, "X"},
+    {1, "I"}
+} };
 
 std::string convertArabicNumberToRomanNumeral(unsigned int arabicNumber)
 {
     std::string romanNumeral;
-    while (arabicNumber >= 100) {
-        romanNumeral += "C";
-        arabicNumber -= 100;
-    }
-    while(arabicNumber >= 10)
+    while (arabicNumber >= arabicToRomanMappings[0].arabicNumber)
     {
-        romanNumeral += "X";
-        arabicNumber -= 10;
+        romanNumeral += arabicToRomanMappings[0].romanNumeral;
+        arabicNumber -= arabicToRomanMappings[0].arabicNumber;
     }
-    while (arabicNumber >= 1)
+    while (arabicNumber >= arabicToRomanMappings[1].arabicNumber)
     {
-        romanNumeral += "I";
-        arabicNumber--;
+        romanNumeral += arabicToRomanMappings[1].romanNumeral;
+        arabicNumber -= arabicToRomanMappings[1].arabicNumber;
+    }
+    while (arabicNumber >= arabicToRomanMappings[2].arabicNumber)
+    {
+        romanNumeral += arabicToRomanMappings[2].romanNumeral;
+        arabicNumber -= arabicToRomanMappings[2].arabicNumber;
     }
     return romanNumeral;
 }
