@@ -20,20 +20,13 @@ const ArabicToRomanMappings arabicToRomanMappings = { {
 std::string convertArabicNumberToRomanNumeral(unsigned int arabicNumber)
 {
     std::string romanNumeral;
-    while (arabicNumber >= arabicToRomanMappings[0].arabicNumber)
+    for (const auto& mapping: arabicToRomanMappings)
     {
-        romanNumeral += arabicToRomanMappings[0].romanNumeral;
-        arabicNumber -= arabicToRomanMappings[0].arabicNumber;
-    }
-    while (arabicNumber >= arabicToRomanMappings[1].arabicNumber)
-    {
-        romanNumeral += arabicToRomanMappings[1].romanNumeral;
-        arabicNumber -= arabicToRomanMappings[1].arabicNumber;
-    }
-    while (arabicNumber >= arabicToRomanMappings[2].arabicNumber)
-    {
-        romanNumeral += arabicToRomanMappings[2].romanNumeral;
-        arabicNumber -= arabicToRomanMappings[2].arabicNumber;
+        while (arabicNumber >= mapping.arabicNumber)
+        {
+            romanNumeral += mapping.romanNumeral;
+            arabicNumber -= mapping.arabicNumber;
+        }
     }
     return romanNumeral;
 }
