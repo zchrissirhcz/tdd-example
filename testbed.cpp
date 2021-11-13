@@ -51,9 +51,3 @@ TEST(ArabicToRomanNumeralsConverter, many_cases)
     assertThat(3333).isConvertedToRomanNumeral("MMMCCCXXXIII");
     assertThat(3999).isConvertedToRomanNumeral("MMMCMXCIX");
 }
-
-int main(int argc, char** argv)
-{
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

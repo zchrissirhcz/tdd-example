@@ -21,11 +21,11 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 target_compile_options(arabicToRomanNumeralConveter PUBLIC ${coverage_compile_options})
-target_link_libraries(arabicToRomanNumeralConveter PUBLIC GTest::gtest ${coverage_link_libraries})
+target_link_libraries(arabicToRomanNumeralConveter PUBLIC ${coverage_link_libraries})
 
 # test
 add_executable(testbed testbed.cpp)
-target_link_libraries(testbed arabicToRomanNumeralConveter)
+target_link_libraries(testbed arabicToRomanNumeralConveter GTest::gtest GTest::gtest_main)
 enable_testing()
 gtest_add_tests(TARGET testbed)
 
